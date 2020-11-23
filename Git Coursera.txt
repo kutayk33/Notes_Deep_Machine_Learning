@@ -1,0 +1,143 @@
+>   The working tree contains the project files for a single commit, 
+the staging area holds a list of files that will be included in the next commit, 
+the local repository contains all of the commits of the project. 
+On your local computer, you have a project directory that contains 
+the working tree as well as a hidden.git directory. 
+The staging area and local repository are located in this directory. 
+The remote repository contains the commits of the project on a remote computer.
+
+>   Use "git status" to view the status of files in the working tree and staging area.
+
+>   Let's add a file named course_git.txt to your working tree.
+Git status shows the file as untracked. 
+This file is only in the working tree and is not managed by git.
+
+>   Use "git add" to add content to the staging area. Staged content is part of the next commit.
+
+>   we can specify the file or a folder name as an argument to the git add command
+        "git add file.txt"
+or we can add all files and folders to be added 
+        "git add ."
+
+>   We can run git status, including the -s flag to keep the response short. 
+        "git status -s"
+
+>   Executing git status again shows that fileA.txt has been added to the stage represented by the green A.
+Next, let's say that we forgot to add something to fileA.txt. We modify fileA.txt in the working tree.
+This time, executing git status shows that the file is in two states. 
+The first version of the file has been added to the staging area represented by the green A.
+The modified version of the file is in the working tree, which git represents with the red M.
+So the first version of fileA.txt is staged, and the second version is modified in the working tree.
+
+>   Use the git commit command to add staged content to the local repository as a commit.
+This includes content that you have recently added to the stage, 
+as well as the content that was in the previous commit.
+
+>   When executing git commit, you can use the -m flag to specify a short commit message.
+
+>   You can view the local repository's commit history using git log.
+
+>   Add the --oneline option to git log to see a condensed version of the log
+        "git log --oneline"
+or to see just only 2 last commit 
+        "git log --oneline -2"
+
+>  Git Graph Model :
+                - Git models the relationship of commits with the directed acyclic graph. 
+                The entire graph contains a project's history
+                - Each node in Git represents a commit. The arrows point at a commit's parents
+                - A branch occurs if a commit has more than one child
+                - A merge occurs when a commit has more than one parent.
+                - "git log --oneline --graph" --->to see the graph in GitBush 
+
+
+>  Git References :
+                - Note the subtle difference between a branch and a branch label. 
+                All three commits belong to the master branch, 
+                even though the master branch label is only at the tip of the branch.
+                - Git implements branch labels as references. 
+                These references are stored in the .git directory of the local repository.
+                - HEAD is a reference to the current commit.
+                It usually points to the branch label of the current branch.
+                - A branch label is a reference that points to the tip of the branch. 
+                - In Git commands use ~ and ^ to conveniently refer to previous commits. 
+                - Create tags to place labels on specific commits. 
+                - Tags are not automatically pushed to a remote repository.
+                
+
+>   Branches  : 
+                - To combine creating and checking out a branch into a single command, 
+                use the -b option with git checkout. "git checkout -b new_branch"
+                - Temporarily viewing the files of a commit while in a detached HEAD state is perfectly fine. 
+                However, if you want to work on files of the checked out commit and create new commits, 
+                you should create a branch on that commit first.
+                - A branch is a set of commits that trace back to the project's first commit. 
+                - Creating a branch creates a branch label. 
+                - Checkout involves updating the HEAD reference and updating the working tree. 
+                - A detached HEAD reference points directly to a commit. 
+                - Fix a detached HEAD by creating a branch. 
+                - Deleting a branch deletes a branch label. 
+                - Dangling commits will eventually be garbage collected.
+
+>   Merging   :
+                - Merging combines the work of multiple branches. 
+                - A fast-forward merge moves the base branch label to the tip of the topic branch. 
+                - A merge is fast-forwardable if no other commits have been made to the base branch since the branch was created. 
+                - A merge commit is the result of combining the work of multiple commits. 
+                - A merge commit has multiple parents.
+
+>   Merge Conflict :
+                - You start out just like with any other merge by checking out the base branch. 
+                - In this case, the base branch is the master branch. 
+                - You then attempt to merge the 'feature X' branch into the master branch. 
+                - Git will inform you that there is a merge conflict, 
+                - both branches modified the same hunk in fileA.txt in different ways. 
+                - At this point, Git has modified fileA.txt, showing you exactly where the conflicts are, 
+                - and has placed the file in your working tree. You then open fileA.txt and resolved the merge conflict. 
+                - This is the part that requires human judgment. 
+                - Once fileA.txt looks the way that you want it to, you stage it so that it becomes part of the merge commit. 
+                - You then commit the merge. At this point, the branches are merged. 
+                - Just like with other merges, you can then optionally delete the 'feature X' branch label. 
+                - The key point here is that, when attempting a merge, 
+                - files with conflicts are modified by Git and placed in the working tree. 
+                - You need to fix those files before executing a successful merge
+
+>   Tracking Branches  :
+                - Tracking branches are local branches that represent remote branches. 
+                - They are named <remote>/<branch> for example origin/master. 
+                - They can become out of sync with local branches, 
+                - and they are updated with network commands like clone, fetch, pull, and push
+                - The "master" label represents the tip of the local master branch.
+                - The "origin/master" label represents the tip of the tracking branch that tracks the master
+                branch on the remote repository.
+                - The "origin/HEAD" label represents the tip of the default branch on the remote repository.
+                The default branch on the remote repository is the master branch.
+
+>   Network commands  :
+                - The Clone command copies a remote repository and creates a local repository. 
+                - The Fetch command retrieves the latest objects and references from the remote repository. 
+                - The Pull command combines a fetch and a merge. 
+                - The Push command adds new objects and references to the remote repository. 
+        >   Fetch  :
+                - The "git fetch" command retrieves new objects and references from another repository. 
+                - It mainly updates all of your "tracking branch"information.
+                - Git fetch allows you to download and view changes on the remote repository 
+                without having to immediately "merge" them into your current work.
+
+        >    Pull   :
+                - "Git pull" combines "git fetch" and "git merge FETCH_HEAD". 
+                - FETCH_HEAD is an alias for the tip of the tracking branch.
+                - "git pull" mergin options :
+                        "--ff" :(default) fast-forward if possible, otherwise perform merge commit
+                        "--no-ff : always include a merge commit
+                        "--ff-only : cancel instead of doing a merge commit 
+                        "rebase" 
+                - Executing a pull can update files in your "working tree". 
+
+                - Clone, fetch, pull and push commands communicate with a remote repository. 
+                - Fetch updates tracking branch information. 
+                - Pull combines a fetch and a merge. 
+                - Push adds commits to the remote repository.
+        >    Rebase   :
+                - Do not rewrite history that has been shared with others.
+                - 

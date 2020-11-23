@@ -1,0 +1,278 @@
+
+7. Multiple Linear Regression
+51. Multiple Linear Regression Intuition - Step 3
+dummy variables: we always omit one dummy variable. in our equation, the one that we omitted will be the default, 
+it will include to b0 constant.
+
+y = b0 + b1*x1 + b2*x2 + b3*x3 + b4*D1
+
+if we have 3 dammy variables, we will add 2 of them to our equation
+
+
+7. Multiple Linear Regression
+54. Multiple Linear Regression Intuition - Step 5
+Null hypothesis : The coefficient of the feature is equal to zero (no effect to predict the target variable)
+
+Alternative Hypothesis :  The feature is statistically significant to predict the target variable
+
+
+SO: p-value < 0.05 indicates that you can reject the null hypothesis of 95 percent confidence
+
+p-value > 0.05 : you accept the null hypothesis
+
+
+
+7. Multiple Linear Regression
+54. Multiple Linear Regression Intuition - Step 5
+One of the 5 methods of building models :
+
+Backward elimination
+
+
+
+Step 1: you have to select a significance level to stay in the model.(SL=0.05)
+
+Step 2: you fit the full model with all possible predicter
+
+Step 3: Find the one with the highest P-value. If P is greater than your significance level 
+
+Step 4: Remove this variable that has the highest P-value and greater than SL
+
+Step 5: Fit the model without this variable ( refit )
+
+
+
+*you go back to Step 3 and do all 3 steps until you come to a point where 
+the variable of the highest P-value that the p-value is still less than your significance level.
+
+So if that condition P-value  > SL is not correct that means your model is ready
+
+
+
+9. Support Vector Regression (SVR)
+82. SVR in Python - Step 1
+we have to apply feature scaling because in the SVR model there
+
+is not an explicit equation of the dependent variable with respect to the features.
+
+And mostly there are not those coefficients multiplying each of the features and 
+therefore not compensating with lower values for the features taking high values.
+
+models which usually have an implicit equation, an implicit relationship between 
+the dependent variable Y and the features X,
+
+Well usually for these models we have to apply features scaling, otherwise, 
+for this data set the model doesn't work
+
+
+
+We will apply feature scaling to X and y.
+
+we apply feature scaling after the split training and test sets
+
+
+
+
+12. Evaluating Regression Models Performance
+99. R-Squared Intuition
+R-Squared is telling us is how good is your fitting line compared to the average line of your data points,
+
+R-Squared is getting closer to 1 it is getting better.
+
+
+
+You add a new variable and If your new variable is not good, 
+is not helping the model then the increase of R-squared will be insignificant, 
+but the increase of variable penalize the adjusted R squared. 
+And this penalization factor will actually drive adjusted R-squared down.
+
+If on the other hand, the new variable that you added is helping 
+to model a lot then the increase in R-squared will be substantial and 
+it will overwhelm the penalization factor so even though you'll still 
+get penalized for adding a variable adjusted R-squared will go up.
+
+
+
+
+
+16. Logistic Regression
+112. Logistic Regression in Python - Step 2
+for some morals like SVR scaling is an absolute necessity.
+
+However, for other models like logistic regression, it is not a necessity.
+
+But still applying it will improve the training performance and therefore the final predictions.
+
+
+
+
+16. Logistic Regression
+113. Logistic Regression in Python - Step 3
+one of the parameters of the logistic regression is C which is the inverse of the regularization strength, 
+meaning that the smaller C the stronger will be the regularization, 
+and therefore the more it will protect you from overfitting.
+
+
+
+
+117. Logistic Regression in Python - Step 7
+prediction boundary of the logistic regression model is actually a straight line, 
+It is because the logistic regression model is a linear classifier.
+
+
+
+24. Evaluating Classification Models Performance
+164. CAP Curve Analysis
+3. How can I improve each of these models?
+
+In Part 10 - Model Selection, you will find the second section dedicated to Parameter Tuning, 
+which will allow you to improve the performance of your models, by tuning them. 
+You probably already noticed that each model is composed of two types of parameters:
+
+the parameters that are learnt, for example, the coefficients in Linear Regression,the hyperparameters.
+
+The hyperparameters are the parameters that are not learned and that are fixed values inside the model equations. 
+For example, the regularization parameter lambda or the penalty parameter C are hyperparameters. 
+So far we used the default value of these hyperparameters, and we haven't searched for 
+their optimal value so that your model reaches even higher performance. 
+Finding their optimal value is exactly what Parameter Tuning is about.
+
+
+
+
+24. Evaluating Classification Models Performance
+164. CAP Curve Analysis
+Which model to choose for my problem?
+
+you first need to figure out whether your problem is linear or non-linear.
+
+If your problem is linear, you should go for Logistic Regression or SVM.
+
+If your problem is non-linear, you should go for K-NN, Naive Bayes, Decision Tree, or Random Forest.
+
+Then from a business point of view, you would rather use:
+
+- Logistic Regression or Naive Bayes when you want to rank your predictions by their probability. 
+For example, if you want to rank your customers from the highest probability that they buy a certain product, 
+to the lowest probability. Logistic Regression if your problem is linear, and Naive Bayes if your problem is non-linear.
+
+- SVM when you want to predict which segment your customers belong to.
+
+- Decision Tree when you want to have a clear interpretation of your model results,
+
+- Random Forest when you are just looking for high performance with less need for interpretation.
+
+
+
+
+34. -------------------- Part 7: Natural Language Processing --------------------
+239. Natural Language Processing in Python - Step 5
+Bag of Words model: to create a spars matrix which will contain in the rows the different reviews, 
+in the columns, all the different words taken from all the different reviews.
+
+each cell, it will get a zero if the word of the column is not in the review of the row and it will get a one otherwise.
+
+the process of creating all these columns corresponding to each of the words taken from all the reviews is called tokenization.
+
+
+
+
+
+36. Artificial Neural Networks
+263. Stochastic Gradient Descent
+the main two differences are that the sarcastic gradient descent method helps you
+
+avoid the problem where you find those local minimums rather than the overall
+
+global minimum and it is faster than batch gradient descent
+
+
+
+36. Artificial Neural Networks
+264. Backpropagation
+The huge advantage of backpropagation and it's a key thing to remember is that 
+during the process of backpropagation simply because of the way the algorithm is structured, 
+you are able to adjust all the weights at the same time so 
+you basically know which part of the error each of your weights in the neural network is responsible for.
+
+
+
+36. Artificial Neural Networks
+269. ANN in Python - Step 2
+Feature scaling is absolutely compulsory for deep learning.
+
+Whenever you build an artificial neural network, you have to apply feature scaling.
+
+regardless of whether they already have some values of zero and one, 
+like the dummy variables, we have to scale everything
+
+
+
+
+36. Artificial Neural Networks
+269. ANN in Python - Step 2
+label encoding should only be used for the dependent variable (y or the target variable). 
+One hot encoding is better for the independent variables (x or features).
+
+If a column contains 3 counties and you use label encoding, 
+then you get values 0,1,2. If this is a feature (x) then the model may mistakenly believe 
+one country has a higher value than the others because 2>0. 
+This is not the intention of encoding categorical data though.
+
+Using one hot encoding would eliminate this issue by ensuring all countries are given separate columns and 
+are equal in weight by assigning them 0 or 1 only.
+
+In the sklearn.preprocessing.LabelEncoder documentation states: 
+"This transformer should be used to encode target values y, not the input X.
+
+
+
+
+
+36. Artificial Neural Networks
+270. ANN in Python - Step 3
+for the activation function of the output layer
+
+While you don't want to have a rectifier activation function but a sigmoid activation function.
+
+It's because having a sigmoid activation function allows getting not only ultimately the predictions,
+
+but It will give you the probabilities that the binary outcome is one.
+
+
+
+
+36. Artificial Neural Networks
+271. ANN in Python - Step 4
+a neural network has to be trained over a certain amount of epochs, So as to improve the accuracy over time.
+
+
+
+
+
+36. Artificial Neural Networks
+271. ANN in Python - Step 4
+optimizer here will update the weights through stochastic gradient descent because 
+we're going to choose Adam Optimizer to add the next iteration, hopefully, reduce the loss.
+
+When you are doing binary classification, you know, classification, when you have to predict a binary outcome.
+
+Well, the lost function must always be binary_crossentropy
+
+for non-binary classification, categorical_crossentropy
+
+
+
+
+37. Convolutional Neural Networks
+283. Step 2 - Pooling
+pooling these features we are first of all getting rid of 75 percent of the information
+
+that is not the feature which is not the important thing that we're looking for.
+
+the point of pooling that we're still being able to preserve the features and moreover account 
+for their possible spatial or textural or other kinds of distortions.
+
+we're reducing the size by 75 percent which is huge which is really going to help us in terms of processing.
+
+And moreover, another benefit of pooling is we are reducing the number of parameters therefore we're preventing overfitting.
