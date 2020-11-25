@@ -1,0 +1,45 @@
+if activation of venv doesn't work :
+
+1.Démarrer Windows Powershell, en tant qu’Administrateur.
+
+2. Taper la commande suivante :
+
+set-executionpolicy unrestricted
+
+3. Valider par « O » (le o de oui).
+
+
+--> py -m venv project_venv
+
+--> project_venv\Scripts\activate.bat
+
+--> pip list # to see packages 
+
+--> install all necessary libraries :
+
+    "pip install requests"
+
+    "pip install ...."
+
+--> pip freeze # to save all libraries that installed and write them in a file 
+               # for future usages. just copy paste the result of commande
+
+certifi==2020.11.8
+chardet==3.0.4
+idna==2.10
+requests==2.25.0
+urllib3==1.26.2
+
+--> rmdir project_venv /s # run this in cmd
+
+if we want to use same pip in another project :
+
+--> py -m venv project_venv_1
+
+--> project_venv_1\Scripts\activate.bat
+
+--> pip install -r pip_freeze.txt
+
+
+NOT : Create ".gitignore" file and add the name of the virtual env
+      to ignore when committing all of the file that come with the venv
