@@ -1,0 +1,106 @@
+you've gotten your system to have 90% accuracy, but this isn't good enough for your application. 
+You might then have a lot of ideas as to how to improve your system.
+you might think well let's collect more data, more training data. 
+Or you might say, maybe your training set isn't diverse enough yet, 
+you should collect images of cats in more diverse poses, 
+or maybe a more diverse set of negative examples. 
+Well maybe you want to train the algorithm longer with gradient descent. 
+Or maybe you want to try a different optimization algorithm, 
+like the Adam optimization algorithm. Or maybe trying a bigger network or 
+a smaller network or maybe you want to try to dropout or maybe L2 regularization. 
+Or maybe you want to change the network architecture such as changing activation functions, 
+changing the number of hidden units and so on and so on
+You'll find that your progress will be much faster if you have a single real number 
+evaluation metric that lets you quickly tell if the new thing you just tried is working better 
+or worse than your last idea. So when teams are starting on a machine learning project, 
+I often recommend that you set up a single real number evaluation metric for your problem like F1 Score
+
+if there are multiple things you care about by say there's one as the optimizing metric that 
+you want to do as well as possible on and one or more as satisficing metrics were you'll be satisfice.
+
+workflow in machine learning is that you try a lot of ideas, 
+train up different models on the training set, and then use the dev set 
+to evaluate the different ideas and pick one. And, 
+keep innovating to improve dev set performance until, f
+inally, you have one clause that you're happy with that you then evaluate on your test set.
+choose a dev set and test set to reflect data you expect to get in future and 
+consider important to do well on. And, in particular, the dev set and the test set here, 
+should come from the same distribution. 
+
+if you had a hundred examples in total, these 70/30 or 60/20/20 rule of thumb would be pretty reasonable.
+If you had thousand examples, maybe if you had ten thousand examples, these things are not unreasonable.
+But in the modern machine learning era, we are now used to working with much larger data set sizes. 
+So let's say you have a million training examples, it might be quite reasonable to set up your data 
+so that you have 98% in the training set, 1% dev, and 1% test.
+
+if you're not satisfied with your old error metric then don't keep coasting with an error metric 
+you're unsatisfied with, instead try to define a new one that you think better captures 
+your preferences in terms of what's actually a better algorithm.
+
+your current metric and data you are evaluating on doesn't correspond to doing well on 
+what you actually care about, then change your metrics and/or your dev/test set 
+to better capture what you need your algorithm to actually do well on.
+
+why comparing to human level performance is helpful, especially on tasks that humans do well.
+or tasks that humans are good at, so long as your machine learning algorithm is 
+still worse than the human, you can get labeled data from humans.
+manual error analysis:
+try to gain insight in terms of why a person got it right but the algorithm got it wrong. 
+get a better analysis of bias and variance
+there are actually certain tools you could use to improve performance that are harder to use 
+once you've surpassed human level performance 
+
+term avoidable bias acknowledges that there's some bias or some minimum level of error that you 
+just cannot get below which is that if Bayes error is 7.5%, you don't actually want to get below that 
+level of error. So rather than saying that if you're training error is 8%, then the 8% is 
+a measure of bias in this example, you're saying that the avoidable bias is maybe 0.5% 
+
+ just to summarize what we've talked about. If you're trying to understand bias and variance where you have an estimate of human-level error for a task that humans can do quite well, you can use human-level error as a proxy or as a approximation for Bayes error.
+And so the difference between your estimate of Bayes error tells you how much avoidable bias is a problem, how much avoidable bias there is. And the difference between training error and dev error, that tells you how much variance is a problem, whether your algorithm's able to generalize from the training set to the dev set. And the big difference between our discussion here and what we saw in an earlier course was that instead of comparing training error to 0%,
+And just calling that the estimate of the bias. In contrast, in this video we have a more nuanced analysis in which there is no particular expectation that you should get 0% error. Because sometimes Bayes error is non zero and sometimes it's just not possible for anything to do better than a certain threshold of error.
+having an estimate of human-level performance gives you an estimate of Bayes error. And this allows you to more quickly make decisions as to whether you should focus on trying to reduce a bias or trying to reduce the variance of your algorithm.
+
+And these techniques will tend to work well until you surpass human-level performance, whereupon you might no longer have a good estimate of Bayes error that still helps you make this decision really clearly.
+
+extent you want to try to reduce avoidable bias, I will try to apply tactics like train a bigger model. So, you can just do better on your training sets or train longer, use a better optimization algorithm, such as ADS momentum or RMSprop, or use a better algorithm like Adam,
+Lisez la vidéo à partir de :2:27 et suivez la transcription2:27
+or one other thing you could try is to just find a better neural network architecture or better set of hyperparameters, and this could include everything from changing the activation function to changing the number of layers or hidden units. Although if you do that, it would be in the direction of increasing the model size to trying out other models or other model architectures, such as recurrent neural networks and convolutional neural networks, which we'll see in later courses. Whether or not a new neural network architecture will fit your training set better is sometimes hard to tell in advance, but sometimes you can get much better results with a better architecture. Next to the extent that you find out variance is a problem, some of the many techniques you could try then includes the following: you can try to get more data because getting more data to train on could help you generalize better to dev set data that your algorithm room didn't see, you could try regularization. So, this includes things like L2 regularization or dropout or data augmentation, which we talked about in the previous course, or once again, you can also try various NN architecture/hyperparameters search to see if that can help you find a neural network architecture that is better suited for your problem. I think that this notion of bias or avoidable bias and variance is one of those things that's easily learnt but tough to master. And you're able to systematically apply the concepts from this week's videos. You actually will be much more efficient and much more systematic and much more strategic than a lot of machine learning teams in terms of how to systematically go about improving the performance of your machine learning system. So, that this week's homework will allow you to practice and exercise more your understanding of these concepts. Best of luck with this week's homework, and I look forward to also seeing you in next week's videos.
+
+ to carry out error analysis, you should find a set of mislabeled examples, either in your dev set, or in your development set. And look at the mislabeled examples for false positives and false negatives. And just count up the number of errors that fall into various different categories. During this process, you might be inspired to generate new categories of errors, like we saw. If you're looking through the examples and you say gee, there are a lot of Instagram filters, or Snapchat filters, they're also messing up my classifier. You can create new categories during that process. But by counting up the fraction of examples that are mislabeled in different ways, often this will help you prioritize. Or give you inspiration for new directions to go in. Now as you're doing error analysis, sometimes you notice that some of your examples in your dev sets are mislabeled. So what do you do about that? 
+
+What if you have data which is incorrectly labeled?
+Consider the training set. It turns out that deep learning algorithms are quite robust to random errors in the training set. They are less robust to systematic errors.
+If you're worried about the impact of incorrectly labeled examples on your dev set or test set, what they recommend you do is during error analysis to add one extra column so that you can also count up the number of examples where the label Y was incorrect
+if mistakes are due to incorrect labels are significant then there's a good reason to go in, find and fix the incorrect labels in your dev set.
+ if you decide to go into a dev set and manually re-examine the labels and try to fix up some of the labels, here are a few additional guidelines or principles to consider:
+1.apply whatever process you apply to both your dev and test sets at the same time.
+2.consider examining examples your algorithm got right as well as ones it got wrong.
+3.training set can come from a slightly different distribution than dev/test set
+
+ if you're starting on building a brand new machine learning application, is to build your first system quickly and then iterate
+quickly set up a dev/test set and metric. 
+build an initial machine learning system quickly. Find the training set, train it and see. Start to see and understand how well you're doing against your dev/test set and your values and metric. 
+When you build your initial system, you then be able to use bias/variance analysis which we talked about earlier as well as error analysis which we talked about just in the last several videos, to prioritize the next steps.
+ build something quick and dirty. Use that to do bias/variance analysis, use that to do error analysis and use the results of those analysis to help you prioritize where to go next.
+
+For some machine learning problem, allowing your training set data to come from a different distribution than your dev and test set allows you to have much more training data. And it will help your learning algorithm to perform better. But it is not always the case
+
+Estimating the bias and variance of your learning algorithm really helps you prioritize what to work on next. But the way you analyze bias and variance changes when your training set comes from a different distribution than your dev and test sets. 
+your training error is 1%, and your dev error is 10%. If your dev data came from the same distribution as your training set, you would say that here you have a large variance problem, that your algorithm's just not generalizing well from the training set which it's doing well on to the dev set, which it's suddenly doing much worse on. But in the setting where your training data and your dev data comes from a different distribution, you can no longer safely draw this conclusion. In particular, maybe it's doing just fine on the dev set, it's just that the training set was really easy because it was high res, very clear images, and maybe the dev set is just much harder.
+
+ by using training data that can come from a different distribution as a dev and test set, this could give you a lot more data and therefore help the performance of your learning algorithm. But instead of just having bias and variance as two potential problems, you now have this third potential problem, data mismatch.
+
+if you think you have a data mismatch problem, I recommend you do error analysis, or look at the training set, or look at the dev set to try this figure out, to try to gain insight into how these two distributions of data might differ. And then see if you can find some ways to get more training data that looks a bit more like your dev set. One of the ways we talked about is artificial data synthesis. And artificial data synthesis does work. In speech recognition, I've seen artificial data synthesis significantly boost the performance of what were already very good speech recognition system. So, it can work very well. But, if you're using artificial data synthesis, just be cautious and bear in mind whether or not you might be accidentally simulating data only from a tiny subset of the space of all possible examples. So, that's it for how to deal with data mismatch. Next, I like to share with you some thoughts on how to learn from multiple types of data at the same time.
+
+transfer learning has been most useful if you're trying to do well on some Task B, usually a problem where you have relatively little data. So for example, in radiology, you know it's difficult to get that many x-ray scans to build a good radiology diagnosis system. So in that case, you might find a related but different task, such as image recognition, where you can get maybe a million images and learn a lot of load-over features from that, so that you can then try to do well on Task B on your radiology task despite not having that much data for it. When transfer learning makes sense? It does help the performance of your learning task significantly. 
+
+multi-task learning: the only times multi-task learning hurts performance compared to training separate neural networks is if your neural network isn't big enough.
+when does multi-task learning make sense?
+if your training on a set of tasks that could benefit from having shared low-level features.
+Usually the amount of data you have for each task is quite similar
+when you can train a big enough neural network to do well on all the tasks. 
+
+It is really weird to hear that some people saying that implementing machine learning is just a few lines of code. :)
+Here is a piece of meaningful advice to Deep-learning practitioners from Andrej Karpathy:
+Before starting to work with frameworks like TensorFlow, you need to understand what is going on behind the scene, if you want to be able to debug and improve your model effectively.
+
