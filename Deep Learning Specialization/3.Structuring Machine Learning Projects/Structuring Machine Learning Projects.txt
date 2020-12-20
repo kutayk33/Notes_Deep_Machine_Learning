@@ -18,7 +18,7 @@ I often recommend that you set up a single real number evaluation metric for you
 if there are multiple things you care about by say there's one as the optimizing metric that 
 you want to do as well as possible on and one or more as satisficing metrics were you'll be satisfice.
 
-workflow in machine learning is that you try a lot of ideas, 
+Workflow in machine learning is that you try a lot of ideas, 
 train up different models on the training set, and then use the dev set 
 to evaluate the different ideas and pick one. And, 
 keep innovating to improve dev set performance until, f
@@ -27,7 +27,7 @@ choose a dev set and test set to reflect data you expect to get in future and
 consider important to do well on. And, in particular, the dev set and the test set here, 
 should come from the same distribution. 
 
-if you had a hundred examples in total, these 70/30 or 60/20/20 rule of thumb would be pretty reasonable.
+ if you had a hundred examples in total, these 70/30 or 60/20/20 rule of thumb would be pretty reasonable.
 If you had thousand examples, maybe if you had ten thousand examples, these things are not unreasonable.
 But in the modern machine learning era, we are now used to working with much larger data set sizes. 
 So let's say you have a million training examples, it might be quite reasonable to set up your data 
