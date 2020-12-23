@@ -1,2 +1,2 @@
 # docs_DS_ML
-Some Documents from Online ML and DS Courses 
+The important notes and documents from the best Online Data Science, Machine Learning and Deep Learning Courses 
