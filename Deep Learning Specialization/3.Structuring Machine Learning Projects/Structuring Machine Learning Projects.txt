@@ -100,7 +100,4 @@ if your training on a set of tasks that could benefit from having shared low-lev
 Usually the amount of data you have for each task is quite similar
 when you can train a big enough neural network to do well on all the tasks. 
 
-It is really weird to hear that some people saying that implementing machine learning is just a few lines of code. :)
-Here is a piece of meaningful advice to Deep-learning practitioners from Andrej Karpathy:
-Before starting to work with frameworks like TensorFlow, you need to understand what is going on behind the scene, if you want to be able to debug and improve your model effectively.
 
